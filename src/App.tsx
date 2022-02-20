@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import { AxiosService } from './services/AxiosService';
+import { UsersService } from './services/UsersService';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // fetch(
+    //     'https://my-json-server.typicode.com/karolkproexe/jsonplaceholderdb/data',
+    // )
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         console.log(res);
+    //     });
+
+    const usersService = new UsersService(new AxiosService(axios));
+    usersService.getUsers().then(res => console.log(res));
+
+    return (
+        <div className='App'>
+            <div>App</div>
+        </div>
+    );
 }
 
 export default App;
